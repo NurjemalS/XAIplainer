@@ -1,0 +1,74 @@
+models:
+  RandomForestRegressor:
+    name: Random Forest Regressor
+    module_name: sklearn.ensemble
+    model_class: tree
+    widget_options:
+      - name: n_estimators
+        label: The number of trees in the forest.
+        value: 100
+        min_value: 90
+        max_value: 200
+        step: 10
+        is_text_input: True
+        data_type: int
+      - name: max_depth
+        label: The maximum depth of the tree. If None then nodes are expanded until all leaves are pure or until all leaves contain less than min_samples_split samples.
+        value: 50
+        min_value: 30
+        max_value: 100
+        step: 10
+        is_text_input: True
+        data_type: int
+      - name: min_samples_split
+        label: The minimum number of samples required to split an internal node.
+        value: 2
+        min_value: 1
+        max_value: 10
+        step: 1
+        is_text_input: True
+        data_type: float
+  LinearRegression:
+    name: Linear Regression
+    module_name: sklearn.linear_model 
+    model_class: other
+  Lars:
+    name: Least Angle Regression
+    module_name: sklearn.linear_model
+    model_class: other
+  SGDRegressor:
+    name: Stochastic Gradient Descent Regressor
+    module_name: sklearn.linear_model
+    model_class: other
+  KNeighborsRegressor:
+    name: k-nearest Neighbors Regressor
+    module_name: sklearn.neighbors
+    model_class: other
+  DecisionTreeRegressor:
+    name: Decision Tree Regressor
+    module_name: sklearn.tree
+    model_class: other
+  XGBRegressor:
+    name: XGBRegressor
+    module_name: xgboost
+    model_class: tree
+  LGBMRegressor:
+    name: LGBMRegressor
+    module_name: lightgbm
+    model_class: tree
+explainers:
+  AleExplainer:
+    name: ALE Explainer
+    plotter: AlePlotter
+    model_class_white_list: all
+  KernelShapExplainer:
+    name: KernelShap Explainer
+    plotter: ShapPlotter
+    model_class_white_list: all
+  TreeShapExplainer:
+    name: TreeShap Explainer
+    plotter: ShapPlotter
+    model_class_white_list: tree
+sklearn_metrics:
+- mean_absolute_error
+- mean_squared_error
